@@ -1,102 +1,42 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <nav className="bg-white/80 backdrop-blur-xl fixed w-full z-10 top-0 left-0 border-b border-gray-200/30 shadow-sm">
-      {/* backdrop-blur-xl = "Apple Glass Look" */}
+    <nav className="fixed top-0 left-0 right-0 bg-white/60 backdrop-blur-md border-b z-50">
+      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+        <div className="text-lg font-semibold">
+          <Link to="/" className="flex items-center gap-2">
+            {/* Hier muss ich noch ein Bild einfügen */}
+            <span className="text-gray-900">Logo</span>
+          </Link>
+        </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
-        
-        {/* Logo */}
-        <Link
-          to="/"
-          className="font-semibold hover:text-red-600 transition text-lg sm:text-xl flex items-center gap-2 text-gray-900"
-        >
-          <i className="fa-solid fa-shield-halved"></i>
-          <span className="hidden sm:inline">Versicherung</span>
-          <span className="sm:hidden">Vers.</span>
-        </Link>
+        {/* Desktop-Links */}
+        <div className="hidden md:flex items-center gap-6">
+          <Link to="/" className="text-gray-700 hover:text-gray-900">Home</Link>
+          <Link to="/about" className="text-gray-700 hover:text-gray-900">About</Link>
+          <Link to="/contact" className="text-gray-700 hover:text-gray-900">Kontakt</Link>
+          <Link to="/account" className="text-gray-700 hover:text-gray-900">Account</Link>
+        </div>
 
-        {/* Mobile Menu Toggle */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="sm:hidden text-gray-700 focus:outline-none"
-        >
-          <i className={`fa-solid ${isOpen ? 'fa-times' : 'fa-bars'} text-xl`}></i>
+        {/* Hamburger für Mobile */}
+        <button className="md:hidden" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
+          <span className="text-2xl">☰</span>
         </button>
-
-        {/* Desktop Menu */}
-        <ul className="hidden sm:flex gap-8 text-gray-700">
-          <li>
-            <Link 
-              to="/" 
-              className="px-3 py-1 rounded-md transition-all duration-200 hover:bg-blue-100 hover:text-blue-700"
-            >
-              Home
-            </Link>
-          </li>
-
-          <li>
-            <Link 
-              to="/about" 
-              className="px-3 py-1 rounded-md transition-all duration-200 hover:bg-blue-100 hover:text-blue-700"
-            >
-              Über uns
-            </Link>
-          </li>
-
-          <li>
-            <Link 
-              to="/contact" 
-              className="px-3 py-1 rounded-md transition-all duration-200 hover:bg-blue-100 hover:text-blue-700"
-            >
-              Kontakt
-            </Link>
-          </li>
-        </ul>
-
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile-Menü */}
       {isOpen && (
-        <div className="sm:hidden bg-white border-t border-gray-200/30">
-          <ul className="flex flex-col gap-4 px-4 py-4 text-gray-700">
-            <li>
-              <Link 
-                to="/" 
-                onClick={() => setIsOpen(false)}
-                className="block py-2 hover:bg-blue-100 hover:text-blue-700 rounded-md transition"
-              >
-                Home
-              </Link>
-            </li>
-
-            <li>
-              <Link 
-                to="/about" 
-                onClick={() => setIsOpen(false)}
-                className="block py-2 hover:bg-blue-100 hover:text-blue-700 rounded-md transition"
-              >
-                Über uns
-              </Link>
-            </li>
-
-            <li>
-              <Link 
-                to="/contact" 
-                onClick={() => setIsOpen(false)}
-                className="block py-2 hover:bg-blue-100 hover:text-blue-700 rounded-md transition"
-              >
-                Kontakt
-              </Link>
-            </li>
-          </ul>
+        <div className="md:hidden px-4 pb-4 bg-white/80">
+          <Link to="/" className="block py-2">Home</Link>
+          <Link to="/about" className="block py-2">About</Link>
+          <Link to="/contact" className="block py-2">Kontakt</Link>
+          <Link to="/account" className="block py-2">Account</Link>
         </div>
       )}
-
     </nav>
   )
 }
