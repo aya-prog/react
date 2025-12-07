@@ -2,7 +2,8 @@ import Navbar from './Navbar'
 import Home from './Home'
 import About from './About'
 import Contact from './Contact'
-import Account from './Account' // neu
+//import Account from './Account' // neu
+import { Account } from './Account.jsx';
 import { Routes, Route } from 'react-router-dom'
 
 function App() {
