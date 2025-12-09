@@ -27,3 +27,7 @@ jobs:
       # 4. Prüfen, ob der Build funktioniert
       - name: Build Project
         run: npm run build
+
+        - name: Generate version
+        run: |
+          echo "APP_VERSION=$(semantic-version -git-branch ${{gitea.ref_name}} -build ${{gitea.run_number}} get-version)" >> $GITHUB_ENV          
