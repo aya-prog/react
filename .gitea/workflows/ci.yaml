@@ -1,0 +1,29 @@
+name: React Build Pipeline
+run-name: ${{ gitea.actor }} testet den Build 🚀
+
+# Wann soll das passieren? Immer wenn du pushst.
+on: [push]
+
+jobs:
+  build-react-app:
+    # "ubuntu-latest" ist das Standard-Label für Docker-Container in Gitea
+    runs-on: ubuntu-latest
+    
+    steps:
+      # 1. Code herunterladen
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      # 2. Node.js (Version 20) vorbereiten
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # 3. Pakete installieren
+      - name: Install dependencies
+        run: npm install
+
+      # 4. Prüfen, ob der Build funktioniert
+      - name: Build Project
+        run: npm run build
