@@ -1,0 +1,23 @@
+#apiVersion: apps/v1
+#kind: Deployment
+#metadata:
+  #name: react-app-deployment
+  #labels:
+    #app: react-app
+#spec:
+  #replicas: 1
+  #selector:
+    #matchLabels:
+      #app: react-app
+  #template:
+    #metadata:
+      #labels:
+        #app: react-app
+    #spec:
+      #containers:
+      #- name: react-app
+        # HIER kommt später deine Artifactory-URL rein
+        # Z.B.: artifactory.is2.de/docker-local/react-app:latest
+        #image: DEINE_ARTIFACTORY_URL/react-app:latest 
+        #ports:
+        #- containerPort: 80 
